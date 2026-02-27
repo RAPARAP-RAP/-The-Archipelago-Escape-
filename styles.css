@@ -1,0 +1,792 @@
+/* ===== Global Styles & Variables ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Luxury Color Palette */
+    --deep-ocean: #023e8a;
+    --rich-gold: #c9a227;
+    --soft-gold: #e5c687;
+    --cream: #faf7f2;
+    --charcoal: #2c2c2c;
+    --slate: #4a4a4a;
+    --off-white: #f8f6f2;
+    --champagne: #f7e9d7;
+    
+    /* Typography - All weights increased */
+    --font-primary: 'Cormorant Garamond', serif;
+    --font-secondary: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--font-secondary);
+    font-weight: 600; /* Increased from 300 to 600 */
+    color: var(--charcoal);
+    background-color: var(--cream);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+/* ===== Luxury Typography - ALL BOLD ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: 700; /* Increased from 500 to 700 (boldest) */
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 800; /* Extra bold */
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+p, li, span, a, label, input, textarea, button {
+    font-weight: 600; /* All text elements bold */
+}
+
+/* ===== Smooth Scroll Behavior ===== */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+/* ===== Navigation ===== */
+.navbar {
+    background-color: rgba(2, 62, 138, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+}
+
+.navbar.scrolled {
+    padding: 0.8rem 3rem;
+    background-color: rgba(2, 62, 138, 0.98);
+    box-shadow: 0 5px 40px rgba(201, 162, 39, 0.2);
+}
+
+.logo {
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
+    font-weight: 800; /* Extra bold */
+    letter-spacing: 2px;
+    color: var(--soft-gold);
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logo:hover {
+    color: var(--rich-gold);
+    transform: scale(1.02);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-secondary);
+    font-weight: 700; /* Increased from 400 to 700 */
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+/* Gold underline animation */
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rich-gold), transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease;
+}
+
+.nav-links a:hover {
+    color: var(--soft-gold);
+    transform: translateY(-2px);
+}
+
+.nav-links a:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-links a.active {
+    color: var(--rich-gold);
+    font-weight: 800; /* Extra bold for active */
+}
+
+.nav-links a.active::before {
+    transform: scaleX(1);
+    background: linear-gradient(90deg, transparent, var(--rich-gold), transparent);
+}
+
+/* ===== Section Headers ===== */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-subtitle {
+    font-family: var(--font-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--rich-gold);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700; /* Bold */
+}
+
+.header-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.gold-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rich-gold), transparent);
+}
+
+.gold-dot {
+    color: var(--rich-gold);
+    font-size: 1.2rem;
+    opacity: 0.8;
+    font-weight: 700; /* Bold */
+}
+
+/* ===== Home Section ===== */
+.home-section {
+    margin-bottom: 3rem;
+}
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('https://placehold.co/1600x600/0077be/ffffff?text=Bacuit+Archipelago,+El+Nido');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 1rem;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to top, var(--cream), transparent);
+}
+
+.hero-title {
+    font-family: var(--font-primary);
+    font-size: 5rem;
+    font-weight: 800; /* Extra bold */
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.5rem;
+    animation: fadeInDown 1.5s ease;
+    letter-spacing: 4px;
+}
+
+.hero-subtitle {
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    font-weight: 700; /* Bold */
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1.5s ease;
+}
+
+.hero-decoration {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    animation: fadeIn 2s ease;
+}
+
+.intro-text {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.intro-paragraph {
+    font-family: var(--font-primary);
+    font-size: 1.4rem;
+    font-weight: 700; /* Increased from 300 to 700 */
+    color: var(--slate);
+    line-height: 1.8;
+    font-style: italic;
+}
+
+/* ===== Destinations Section ===== */
+.destinations-section {
+    padding: 5rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: var(--off-white);
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* Luxury Card Styles */
+.destination-card {
+    flex: 1 1 350px;
+    max-width: 400px;
+    background-color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.destination-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(201, 162, 39, 0.15);
+}
+
+.card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 280px;
+}
+
+.destination-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.destination-card:hover img {
+    transform: scale(1.1);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(2, 62, 138, 0.3));
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 2rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.destination-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    font-family: var(--font-secondary);
+    color: white;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px solid var(--rich-gold);
+    padding-bottom: 0.5rem;
+    font-weight: 700; /* Bold */
+}
+
+.card-content {
+    padding: 2rem;
+    background: white;
+    position: relative;
+}
+
+.card-content h3 {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    color: var(--deep-ocean);
+    margin-bottom: 0.5rem;
+    font-weight: 800; /* Extra bold */
+}
+
+.card-description {
+    font-family: var(--font-secondary);
+    font-size: 0.95rem;
+    color: var(--slate);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-weight: 600; /* Increased from 300 to 600 */
+}
+
+.activities {
+    border-top: 1px solid rgba(201, 162, 39, 0.2);
+    padding-top: 1.5rem;
+}
+
+.activities-label {
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--rich-gold);
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 700; /* Bold */
+}
+
+.activities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.activity-tag {
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    color: var(--slate);
+    background: var(--champagne);
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    font-weight: 700; /* Bold */
+}
+
+.activity-tag:hover {
+    background: var(--rich-gold);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ===== Travel Tips Section ===== */
+.travel-tips-section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.tips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    background: linear-gradient(135deg, var(--off-white) 0%, white 100%);
+    border-radius: 0;
+    padding: 3rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.03);
+}
+
+.quick-tips, .contact-form {
+    flex: 1 1 400px;
+    padding: 1rem;
+}
+
+.quick-tips h3, .contact-form h3 {
+    font-family: var(--font-primary);
+    font-size: 2.2rem;
+    color: var(--deep-ocean);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    font-weight: 800; /* Extra bold */
+}
+
+.quick-tips h3::after, .contact-form h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--rich-gold);
+}
+
+.tips-list {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.tips-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+    transition: all 0.3s ease;
+}
+
+.tips-list li:hover {
+    transform: translateX(10px);
+    border-bottom-color: var(--rich-gold);
+}
+
+.tip-icon {
+    font-size: 1.5rem;
+    min-width: 40px;
+    font-weight: 700; /* Bold */
+}
+
+.tip-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.tip-label {
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--rich-gold);
+    margin-bottom: 0.2rem;
+    font-weight: 700; /* Bold */
+}
+
+.tip-value {
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    font-weight: 700; /* Bold */
+}
+
+/* Luxury Contact Form */
+.form-intro {
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    color: var(--slate);
+    font-style: italic;
+    margin-bottom: 2rem;
+    font-weight: 600; /* Bold */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--rich-gold);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700; /* Bold */
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    background: white;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    color: var(--charcoal);
+    transition: all 0.3s ease;
+    font-weight: 600; /* Bold */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--rich-gold);
+    box-shadow: 0 5px 15px rgba(201, 162, 39, 0.1);
+    transform: translateY(-2px);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #ccc;
+    font-style: italic;
+    font-weight: 500; /* Slightly less bold for placeholders */
+}
+
+.luxury-button {
+    position: relative;
+    background: transparent;
+    color: var(--deep-ocean);
+    font-family: var(--font-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    width: 100%;
+    font-weight: 700; /* Bold */
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+    color: var(--deep-ocean);
+    transition: color 0.4s ease;
+    font-weight: 800; /* Extra bold */
+}
+
+.button-gold-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--rich-gold);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
+.luxury-button:hover {
+    background: rgba(201, 162, 39, 0.05);
+}
+
+.luxury-button:hover .button-text {
+    color: var(--rich-gold);
+}
+
+.luxury-button:hover .button-gold-line {
+    transform: translateX(0);
+}
+
+/* ===== Footer ===== */
+footer {
+    background-color: var(--deep-ocean);
+    color: white;
+    padding: 4rem 2rem;
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rich-gold), transparent);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-logo {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    font-weight: 800; /* Extra bold */
+    color: var(--soft-gold);
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+}
+
+.footer-tagline {
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    font-weight: 600; /* Bold */
+}
+
+.footer-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.copyright {
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
+    font-weight: 600; /* Bold */
+}
+
+/* ===== Scroll Progress ===== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px; /* Slightly thicker */
+    background: linear-gradient(90deg, var(--rich-gold), var(--soft-gold), var(--rich-gold));
+    z-index: 1001;
+    transition: width 0.1s ease;
+    box-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ============================================ */
+/* ========== RESPONSIVE DESIGN =============== */
+/* ============================================ */
+
+@media screen and (max-width: 900px) {
+    h1 {
+        font-size: 3rem;
+        font-weight: 800;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 2.2rem;
+        font-weight: 800;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    
+    .navbar {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        gap: 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    
+    .intro-paragraph {
+        font-size: 1.2rem;
+    }
+    
+    .card-container {
+        gap: 1.5rem;
+    }
+    
+    .destination-card {
+        max-width: 100%;
+    }
+    
+    .tips-container {
+        padding: 2rem 1rem;
+    }
+    
+    .footer-logo {
+        font-size: 1.5rem;
+    }
+}
